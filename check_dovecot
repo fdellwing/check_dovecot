@@ -39,6 +39,7 @@ PS=/bin/ps
 GREP=/bin/grep
 WC=/usr/bin/wc
 
+# shellcheck disable=SC2034
 FLAG_VERBOSE=FALSE
 FLAG_DOVECOT=FALSE
 FLAG_IMAP_LOGIN=FALSE
@@ -148,6 +149,7 @@ if test $FLAG_DOVECOT = "TRUE" ; then
 	else
 		DOVE_STATUS_TEXT="Dovecot OK - master processes running"
 	fi
+	# shellcheck disable=SC1117
 	RESULT="$RESULT$DOVE_STATUS_TEXT\n\n"
 fi
 # Handle IMAP login test
@@ -167,6 +169,7 @@ if test $FLAG_IMAP_LOGIN = "TRUE" ; then
 				fi
 			fi
 		fi
+		# shellcheck disable=SC1117
 		RESULT="$RESULT$IMAP_STATUS_TEXT |imap-login=$TMPOUT;$LEVEL_WARN;$LEVEL_CRIT;;\n"
 	else
 		echo "ERROR: Invalid warning/critical values"
@@ -191,6 +194,7 @@ if test $FLAG_POP_LOGIN = "TRUE" ; then
 				fi
 			fi
 		fi
+		# shellcheck disable=SC1117
 		RESULT="$RESULT$POP_STATUS_TEXT | pop-login=$TMPOUT;$LEVEL_WARN;$LEVEL_CRIT;;\n"
 	else
 		echo "ERROR: Invalid warning/critical values"
@@ -215,6 +219,7 @@ if test $FLAG_IMAP = "TRUE" ; then
 				fi
 			fi
 		fi
+		# shellcheck disable=SC1117
 		RESULT="$RESULT$IMAP_STATUS_TEXT | imap-status=$TMPOUT;$LEVEL_WARN;$LEVEL_CRIT;;\n"
 	else
 		echo "ERROR: Invalid warning/critical values"
@@ -239,6 +244,7 @@ if test $FLAG_POP = "TRUE" ; then
 				fi
 			fi
 		fi
+		# shellcheck disable=SC1117
 		RESULT="$RESULT$POP_STATUS_TEXT | pop-status=$TMPOUT;$LEVEL_WARN;$LEVEL_CRIT;;\n"
 	else
 		echo "ERROR: Invalid warning/critical values"
